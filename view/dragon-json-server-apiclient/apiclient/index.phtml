@@ -1,0 +1,103 @@
+<?php
+/**
+ * @link http://dragonjsonserver.de/
+ * @copyright Copyright (c) 2012-2014 DragonProjects (http://dragonprojects.de/)
+ * @license http://license.dragonprojects.de/dragonjsonserver.txt New BSD License
+ * @author Christoph Herrmann <developer@dragonprojects.de>
+ * @package DragonJsonServerGUI
+ */
+?>
+<!DOCTYPE html>
+<html lang="en" ng-app="dragonjsonserver.apiclient" ng-controller="ApiclientCtrl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><?= $this->application->name . ' ' . $this->application->version ?></title>
+        <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 70px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href=""><?= $this->application->name . ' ' . $this->application->version ?></a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal" role="form">
+                        <legend>Settings</legend>
+                        <div class="form-group">
+                            <label for="apiclienturl" class="col-sm-3 control-label">Apiclient URL</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="apiclienturl" ng-model="apiclienturl" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="server" class="col-sm-3 control-label">Server URL</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="server" ng-model="server">
+                                    <span class="input-group-btn">
+                                        <button ng-if="!connected || server != connectedserver" class="btn btn-primary" type="button" ng-click="connect()">Connect</button>
+                                        <button ng-if="connected && server == connectedserver" class="btn btn-primary" type="button" ng-click="disconnect()">Disconnect</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <legend>Service</legend>
+                        <div class="form-group">
+                            <label for="namespace" class="col-sm-3 control-label">Namespace</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="namespace" ng-model="namespace">
+                                    <option ng-repeat="(namespace, v) in services">{{namespace}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="method" class="col-sm-3 control-label">Method</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="method" ng-model="method">
+                                    <option ng-repeat="(method, v) in services[namespace]">{{method}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <legend>Params</legend>
+                        <div class="form-group" ng-repeat="options in services[namespace][method]">
+                            <label for="param_{{options.name}}" class="col-sm-3 control-label">{{options.name}}</label>
+                            <div ng-switch on="options.type" class="col-sm-9">
+                                <input ng-switch-default type="text" class="form-control" id="param_{{options.name}}" ng-model="params[options.name]">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-primary" ng-click="send()">Send Request</a>
+                    <br><br>
+                    <legend>Response</legend>
+                    <pre>{{response}}</pre>
+                </div>
+            </div>
+        </div>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular/angular-route.js"></script>
+        <script src="js/URI.js"></script>
+        <script src="js/dragonjsonserver.client.js"></script>
+        <script src="js/dragonjsonserver.request.js"></script>
+        <script>
+            var config = JSON.parse('<?= json_encode([
+                'server'    => $this->server,
+                'apiclient' => $this->apiclient,
+            ]) ?>');
+        </script>
+        <script src="js/dragonjsonserverapiclient.js"></script>
+    </body>
+</html>
