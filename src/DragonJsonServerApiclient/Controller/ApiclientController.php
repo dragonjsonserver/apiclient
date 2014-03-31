@@ -14,10 +14,15 @@ class ApiclientController extends \Zend\Mvc\Controller\AbstractActionController
     public function indexAction()
     {
         $config = $this->getServiceLocator()->get('Config');
-    	return [
-            'application' => $config['dragonjsonserver']['application'],
-            'server'      => $config['dragonjsonserver']['server'],
-            'apiclient'   => $config['dragonjsonserverapiclient'],
-        ];
+
+        $viewModel = new \Zend\View\Model\ViewModel();
+        $viewModel
+            ->setVariables([
+                'application' => $config['dragonjsonserver']['application'],
+                'server'      => $config['dragonjsonserver']['server'],
+                'apiclient'   => $config['dragonjsonserverapiclient'],
+            ])
+            ->setTerminal(true);
+        return $viewModel;
     }
 }
