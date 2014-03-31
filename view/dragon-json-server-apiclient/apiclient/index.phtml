@@ -8,11 +8,11 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="en" ng-app="dragonjsonserver.apiclient" ng-controller="ApiclientCtrl">
+<html lang="en" ng-app="dragonjsonserverapiclient" ng-controller="ApiclientCtrl">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?= $this->application->name . ' ' . $this->application->version ?></title>
+        <title><?= $this->application['name'] . ' ' . $this->application['version'] ?></title>
         <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
         <style type="text/css">
             body {
@@ -24,7 +24,7 @@
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href=""><?= $this->application->name . ' ' . $this->application->version ?></a>
+                    <a class="navbar-brand" href=""><?= $this->application['name'] . ' ' . $this->application['version'] ?></a>
                 </div>
             </div>
         </div>
@@ -88,8 +88,7 @@
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular/angular-route.js"></script>
-        <script src="js/URI.js"></script>
+        <script src="bower_components/uri.js/src/URI.js"></script>
         <script src="js/dragonjsonserver.client.js"></script>
         <script src="js/dragonjsonserver.request.js"></script>
         <script>
