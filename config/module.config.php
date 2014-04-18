@@ -12,8 +12,8 @@
  */
 return [
     'dragonjsonserverapiclient' => [
-        'namespace' => 'Emailaddress',
-        'method'    => 'loginEmailaddress',
+        'namespace' => '',
+        'method'    => '',
     ],
     'router' => [
         'routes' => [
