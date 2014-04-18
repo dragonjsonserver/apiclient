@@ -75,7 +75,7 @@ dragonjsonserverapiclient.controller('ApiclientCtrl', ['$scope', function ($scop
         var servicename = $scope.namespace + '.' + $scope.method;
         client.send(new DragonJsonServer.Request(servicename, params), {
             success : function (response) {
-                if ('object' == typeof(response.result)) {
+                if ('object' == typeof response.result) {
                     $.extend($scope.params, response.result);
                 }
                 $scope.response = JSON.stringify(response, null, 4);
