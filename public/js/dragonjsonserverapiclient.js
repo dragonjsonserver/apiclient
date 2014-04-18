@@ -45,7 +45,11 @@ dragonjsonserverapiclient.controller('ApiclientCtrl', ['$scope', function ($scop
             }
             $scope.namespace = query.namespace || config.apiclient.namespace;
             $scope.method = query.method || config.apiclient.method;
-            $scope.params = query.params || {};
+            if (query.params) {
+                $scope.params = JSON.parse(query.params);
+            } else {
+                $scope.params = {};
+            }
             $scope.connectedserver = $scope.server;
             $scope.$apply();
         }});
@@ -82,6 +86,17 @@ dragonjsonserverapiclient.controller('ApiclientCtrl', ['$scope', function ($scop
                 $scope.$apply();
             }
         });
+    };
+
+    /**
+     * Fügt zum Array einen neuen Index hinzu
+     * @param string paramname
+     */
+    $scope.addArray = function (paramname) {
+        if ('object' != typeof $scope.params[paramname]) {
+            $scope.params[paramname] = [];
+        }
+        $scope.params[paramname].push('');
     };
 
     $scope.connect();

@@ -72,6 +72,12 @@
                         <div class="form-group" ng-repeat="options in services[namespace][method]">
                             <label for="param_{{options.name}}" class="col-sm-3 control-label">{{options.name}}</label>
                             <div ng-switch on="options.type" class="col-sm-9">
+                                <div ng-switch-when="array">
+                                    <div ng-repeat="(key, param) in params[options.name] track by key">
+                                        <input type="text" class="form-control" ng-model="params[options.name][key]">
+                                    </div>
+                                    <a class="btn btn-default" ng-click="addArray(options.name)"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                                </div>
                                 <input ng-switch-default type="text" class="form-control" id="param_{{options.name}}" ng-model="params[options.name]">
                             </div>
                         </div>
