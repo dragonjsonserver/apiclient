@@ -1,9 +1,9 @@
 {
     "name"    : "dragonjsonserverapiclient",
-    "version" : "2.x",
     "dependencies" : {
-        "bootstrap"                   : "latest",
-        "angular"                     : "latest",
-        "dragonjsonserverjsconnector" : "latest"
+        "bootstrap" : "latest",
+        "angular" : "latest",
+        "dragonjsonserverjsconnector" : "latest",
+        "dragonjsonserverjsapiclient" : "latest"
     }
 }
