@@ -12,6 +12,8 @@
     ],
     "dependencies" : {
         "bootstrap" : "latest",
+        "html5shiv-dist" : "latest",
+        "respond" : "latest",
         "angular" : "latest",
         "dragonjsonserver" : "latest",
         "dragonjsonserverapiclient" : "latest"
