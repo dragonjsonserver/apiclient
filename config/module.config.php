@@ -27,6 +27,16 @@ return [
                     ],
                 ],
             ],
+            'apiclient' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/apiclient',
+                    'defaults' => [
+                        'controller' => 'DragonJsonServerApiclient\Controller\Apiclient',
+                        'action' => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
