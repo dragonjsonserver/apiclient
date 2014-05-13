@@ -1,9 +1,19 @@
 {
-    "name"    : "dragonjsonserverapiclient",
+    "name" : "dragonjsonserverapiclient",
+    "ignore" : [
+        "config",
+        "public/.gitignore",
+        "public/index.php",
+        "src",
+        "view",
+        ".bowerrc",
+        "composer.json",
+        "Module.php"
+    ],
     "dependencies" : {
         "bootstrap" : "latest",
         "angular" : "latest",
-        "dragonjsonserverjsconnector" : "latest",
-        "dragonjsonserverjsapiclient" : "latest"
+        "dragonjsonserver" : "latest",
+        "dragonjsonserverapiclient" : "latest"
     }
 }
