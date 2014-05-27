@@ -44,13 +44,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="server" class="col-sm-3 control-label">Server URL</label>
+                            <label for="serverurl" class="col-sm-3 control-label">Server URL</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="server" ng-model="server">
+                                    <input type="text" class="form-control" id="serverurl" ng-model="serverurl">
                                     <span class="input-group-btn">
-                                        <button ng-if="!connected || server != connectedserver" class="btn btn-primary" type="button" ng-click="connect()">Connect</button>
-                                        <button ng-if="connected && server == connectedserver" class="btn btn-primary" type="button" ng-click="disconnect()">Disconnect</button>
+                                        <button ng-if="!connected || serverurl != connectedserverurl" class="btn btn-primary" type="button" ng-click="connect()">Connect</button>
+                                        <button ng-if="connected && serverurl == connectedserverurl" class="btn btn-primary" type="button" ng-click="disconnect()">Disconnect</button>
                                     </span>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
         <script src="bower_components/dragonjsonserver/public/js/dragonjsonserver.js"></script>
         <script>
             var config = JSON.parse('<?= json_encode([
-                'server'    => $this->server,
+                'serverurl' => $this->serverurl,
                 'apiclient' => $this->apiclient,
             ]) ?>');
         </script>

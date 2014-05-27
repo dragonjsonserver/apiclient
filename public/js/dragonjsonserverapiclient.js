@@ -12,7 +12,7 @@
 var dragonjsonserverapiclient = angular.module('dragonjsonserverapiclient', []);
 dragonjsonserverapiclient.controller('ApiclientCtrl', ['$scope', function ($scope) {
     var query = new URI().query(true);
-    $scope.server = query.server || config.server;
+    $scope.serverurl = query.serverurl || config.serverurl;
     var client;
 
     /**
@@ -31,7 +31,7 @@ dragonjsonserverapiclient.controller('ApiclientCtrl', ['$scope', function ($scop
      */
     $scope.connect = function () {
         $scope.disconnect();
-        client = new DragonJsonServer.Client($scope.server);
+        client = new DragonJsonServer.Client($scope.serverurl);
         client.smd({success : function (response) {
             $scope.connected = true;
             for (var servicename in response.services) {
@@ -50,7 +50,7 @@ dragonjsonserverapiclient.controller('ApiclientCtrl', ['$scope', function ($scop
             } else {
                 $scope.params = {};
             }
-            $scope.connectedserver = $scope.server;
+            $scope.connectedserverurl = $scope.serverurl;
             $scope.$apply();
         }});
     };
@@ -67,7 +67,7 @@ dragonjsonserverapiclient.controller('ApiclientCtrl', ['$scope', function ($scop
         $scope.response = '';
         $scope.apiclienturl = new URI()
             .query({
-                server : $scope.server,
+                serverurl : $scope.serverurl,
                 namespace : $scope.namespace,
                 method : $scope.method,
                 params : JSON.stringify(params)
