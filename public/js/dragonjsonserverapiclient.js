@@ -12,6 +12,13 @@
 var dragonjsonserverapiclient = angular.module('dragonjsonserverapiclient', []);
 dragonjsonserverapiclient.controller('ApiclientCtrl', ['$scope', function ($scope) {
     var query = new URI().query(true);
+    if ($.isPlainObject(config.serverurl)) {
+        if (URI().scheme() == 'https') {
+            config.serverurl = config.serverurl.https;
+        } else {
+            config.serverurl = config.serverurl.http;
+        }
+    }
     $scope.serverurl = query.serverurl || config.serverurl;
     var client;
 

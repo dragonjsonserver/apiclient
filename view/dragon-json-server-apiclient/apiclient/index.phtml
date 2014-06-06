@@ -101,7 +101,7 @@
         <script src="bower_components/uri.js/src/URI.min.js"></script>
         <script src="bower_components/dragonjsonserver/public/js/dragonjsonserver.js"></script>
         <script>
-            var config = JSON.parse('<?= json_encode([
+            var config = JSON.parse('<?= \Zend\Json\Encoder::encode([
                 'serverurl' => $this->serverurl,
                 'apiclient' => $this->apiclient,
             ]) ?>');
