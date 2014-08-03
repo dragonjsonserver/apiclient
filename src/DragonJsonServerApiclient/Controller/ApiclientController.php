@@ -23,6 +23,7 @@ class ApiclientController extends \Zend\Mvc\Controller\AbstractActionController
                 'apiclient'   => $config['dragonjsonserverapiclient'],
             ])
             ->setTerminal(true);
+
         return $viewModel;
     }
 }
